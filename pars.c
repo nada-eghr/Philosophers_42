@@ -13,7 +13,7 @@
 #include "philo.h"
 #include<ctype.h>
 
-int is_positive_number(const char *str)
+int is_positive_number(char *str)
 {
     int i = 0;
     if (!str[0])
@@ -26,23 +26,29 @@ int is_positive_number(const char *str)
     }
     return 1;
 }
+int check_args(char **args)
+{
+    int i = 0;
+    while (args[i])
+    {
+        if (!is_positive_number(args[i]))
+            return 0;
+        i++;
+    }
+    return 1;
+}
 int main (int ac , char **av)
 {
-    int i = 1; 
+   
     t_arg arg;
-    if (ac != 6 )
+    if (ac < 5 || ac > 6 )
     {
         printf("wrong number of argumments. \n");
         return 1;
     }
-    while ( i < ac)
+    if (!check_args(av + 1))
     {
-        if (!is_positive_number(av[i]))
-        {
-            printf("argument %d is not valid number\n" , i);
-            return 0;
-        }
-        i++;
+        printf("arguments are not valid number\n");
     }
     arg.num_philos = atoi(av[1]);
     arg.time_to_die = atoi(av[2]);

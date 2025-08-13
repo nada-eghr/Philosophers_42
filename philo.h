@@ -20,15 +20,15 @@
 # include <stdio.h>
 
 
-typedef struct s_arg
+typedef struct s_args
 {
-    int num_philos;
-    int time_to_die;
-    int time_to_eat;
-    int time_to_sleep;
-    int num_time_must_eat;
+    int num_philos; /
+    int time_to_die;/
+    int time_to_eat;/
+    int time_to_sleep;/
+    int num_time_must_eat;/
 
-} t_arg;
+} t_args;
 
 
 
