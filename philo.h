@@ -19,16 +19,34 @@
 # include <stdlib.h>
 # include <stdio.h>
 
+typedef struct s_timeval {
+    time_t      tv_sec;   // seconds
+    suseconds_t tv_usec;  // microseconds (millionths of a second)
+} t_timeval;
 
-typedef struct s_args
+typedef struct s_philo
 {
-    int num_philos; /
-    int time_to_die;/
-    int time_to_eat;/
-    int time_to_sleep;/
-    int num_time_must_eat;/
+    int         philo_id;
+    int         left_fork;
+    int         right_fork;
+    int         meal_eaten;
+    long long   last_meal_eating;
+    pthread_t   thread;
+    t_data      *data;
+} t_philo;
 
-} t_args;
+typedef struct s_data
+{
+    t_philo         *philo;
+    pthread_mutex_t *forks;
+    int             nb_of_philos;
+    int             time_to_die;
+    int             time_to_eat;
+    int             time_to_sleep;
+    int             nb_time_must_eat;
+    int             start_time;
+
+} t_data;
 
 
 

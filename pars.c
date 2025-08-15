@@ -46,15 +46,7 @@ int main (int ac , char **av)
         printf("wrong number of argumments. \n");
         return 1;
     }
-    if (!check_args(av + 1))
-    {
-        printf("arguments are not valid number\n");
-    }
-    arg.num_philos = atoi(av[1]);
-    arg.time_to_die = atoi(av[2]);
-    arg.time_to_eat = atoi(av[3]);
-    arg.time_to_sleep = atoi(av[4]);
-    arg.num_time_must_eat = atoi(av[5]);
+   
     
     
     
