@@ -13,10 +13,12 @@
 #ifndef PHILO_H
 # define PHILO_H
 # include <pthread.h>
-#include <pthread/sched.h>
+// #include <pthread/sched.h>
 # include <sys/time.h>
 # include <unistd.h>
 # include <stdlib.h>
+#include<string.h>
+#include <ctype.h>
 # include <stdio.h>
 
 typedef struct s_timeval {
@@ -24,6 +26,8 @@ typedef struct s_timeval {
     suseconds_t tv_usec;  // microseconds (millionths of a second)
 } t_timeval;
 
+
+typedef struct s_data	t_data;
 typedef struct s_philo
 {
     int         philo_id;
@@ -48,6 +52,9 @@ typedef struct s_data
 
 } t_data;
 
-
-
+long long current_time_ms(void);
+void init_philosopher(t_philo *philo , t_data *data);
+int init_data(t_data *data , int ac , char **av);
+int is_positive_number(char *str);
+int check_args(char **args);
 #endif

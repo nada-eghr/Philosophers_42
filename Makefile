@@ -6,8 +6,9 @@ CFLAGS  = -Wall -Wextra -Werror
 
 # Source and object files
 NAME    = philo
-SRCS    =  ./pars/expand.c  \
-			.
+SRCS    =  ./pars.c  ./init.c 
+		
+			
 OBJS    = $(SRCS:.c=.o)
 
 # Build target

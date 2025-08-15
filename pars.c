@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "philo.h"
-#include<ctype.h>
 
 int is_positive_number(char *str)
 {
@@ -39,14 +38,30 @@ int check_args(char **args)
 }
 int main (int ac , char **av)
 {
+    t_data *data;
    
-    t_arg arg;
     if (ac < 5 || ac > 6 )
     {
         printf("wrong number of argumments. \n");
         return 1;
     }
-   
+    if (!check_args(av+1))
+    {
+         printf("Invalid arguments: only positive numbers allowed.\n");
+        return 1;
+    }
+     data = malloc(sizeof(t_data));
+     if (!data)
+     {
+        printf("Memory allocation error.\n");
+        return (1);
+     }
+   if (init_data(data, ac, av))
+    {
+        printf("Memory allocation error.\n");
+        free(data);
+        return 1;
+    }
     
     
     
