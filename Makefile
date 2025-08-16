@@ -6,7 +6,7 @@ CFLAGS  = -Wall -Wextra -Werror
 
 # Source and object files
 NAME    = philo
-SRCS    =  ./pars.c  ./init.c 
+SRCS    =  ./main.c  ./init.c  ./create_philos.c
 		
 			
 OBJS    = $(SRCS:.c=.o)

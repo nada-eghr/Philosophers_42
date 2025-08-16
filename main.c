@@ -1,17 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pars.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:22:58 by naessgui          #+#    #+#             */
-/*   Updated: 2025/07/14 16:35:24 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:13:13 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
 int is_positive_number(char *str)
 {
     int i = 0;
@@ -47,22 +46,22 @@ int main (int ac , char **av)
     }
     if (!check_args(av+1))
     {
-         printf("Invalid arguments: only positive numbers allowed.\n");
+        printf("Invalid arguments: only positive numbers allowed.\n");
         return 1;
     }
-     data = malloc(sizeof(t_data));
-     if (!data)
-     {
-        printf("Memory allocation error.\n");
+    data = malloc(sizeof(t_data));
+    if (!data)
         return (1);
-     }
-   if (init_data(data, ac, av))
+    if (!init_data(data, ac, av))
     {
-        printf("Memory allocation error.\n");
         free(data);
         return 1;
     }
     
     
+    // free(data->forks);
+    // free(data->philo);
+    // free(data);
+    return 0;
     
 }
