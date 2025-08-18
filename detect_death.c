@@ -12,9 +12,11 @@
 
 #include"philo.h"
 
-void *detect_death(t_data *data)
+void *detect_death(void *arg)
 {
     long long current_time;
+    t_data *data;
+    data = (t_data *)arg;
     int i;
 
     while (!data->simulation_end)
@@ -25,7 +27,7 @@ void *detect_death(t_data *data)
             current_time = current_time_ms();
             if (current_time - data->philo[i].last_meal_eating > data->time_to_die)
             {
-               printf("%lld Philosopher %d died\n",
+               printf("%lld   %d is died\n",
                        current_time_ms() - data->start_time,
                        data->philo[i].philo_id);
                 data->simulation_end = 1;

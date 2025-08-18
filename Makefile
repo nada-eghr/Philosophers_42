@@ -1,7 +1,8 @@
 # Compiler and flags
+# -g -fsanitize=address
 CC      = cc -g -fsanitize=address
-
-CFLAGS  = -Wall -Wextra -Werror 
+CFLAGS  = -Wall -Wextra -Werror -pthread
+LDFLAGS = -pthread
 # LIBS    = -lreadline
 
 # Source and object files

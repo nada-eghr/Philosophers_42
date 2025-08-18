@@ -65,7 +65,11 @@ int	init_data(t_data *data, int ac, char **av)
 {
 	int	i;
     if (init_args(data, ac, av))
+	{
         return (1);
+
+	}
+
 	data->forks = malloc(sizeof(pthread_mutex_t) * data->nb_philos);
 	if (!data->forks)
     {

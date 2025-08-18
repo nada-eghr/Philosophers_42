@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "philo.h"
+
 int is_positive_number(char *str)
 {
     int i = 0;
@@ -52,12 +53,23 @@ int main (int ac , char **av)
     data = malloc(sizeof(t_data));
     if (!data)
         return (1);
-    if (!init_data(data, ac, av))
+    if (init_data(data, ac, av))
     {
+        free(data->forks);
+        free(data->philo);
         free(data);
         return 1;
     }
-    create_philo(data->philo, data);
+   data->simulation_end = 0; 
+
+    create_philo(data->philo, data); 
+
+    detect_death(data); 
+
+    // for (int i = 0; i < data->nb_philos; i++)
+    //     pthread_mutex_destroy(&data->forks[i]);
+
+
     
     
     

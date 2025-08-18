@@ -59,7 +59,7 @@ void init_philosopher(t_philo *philo , t_data *data);
 int init_data(t_data *data , int ac , char **av);
 void *routine(void *arg);
 void create_philo(t_philo *philo , t_data *data);
-void *detect_death(t_data *data);
+void *detect_death(void *arg);
 // int is_positive_number(char *str);
 // int check_args(char **args);
 #endif 
