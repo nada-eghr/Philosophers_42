@@ -6,7 +6,7 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 15:14:30 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/16 19:02:50 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/17 19:26:20 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void *routine(void *arg)
         usleep(100); 
         printf("Philosopher %d is eating.\n", philo->philo_id);
         usleep(100); 
+        philo->meal_eaten++;
         printf("Philosopher %d is sleeping.\n", philo->philo_id);
         usleep(100);
     }
@@ -32,7 +33,7 @@ void *routine(void *arg)
 void create_philo(t_philo *philo , t_data *data)
 {
     int i;
-  
+    pthread_t death_thread;
     i = 0;
     while(i < data->nb_philos)
     {
@@ -40,10 +41,12 @@ void create_philo(t_philo *philo , t_data *data)
         pthread_create(&philo[i].thread, NULL, &routine, &philo[i]);
         i++;
     }
+    pthread_create(&death_thread, NULL, (void*)&detect_death, data);
     i = 0;
     while ( i < data->nb_philos)
     {
         pthread_join(philo[i].thread, NULL);
         i++;
     }
+    pthread_join(death_thread, NULL);
 }

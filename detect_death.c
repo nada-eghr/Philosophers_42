@@ -6,30 +6,34 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:47:34 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/16 18:54:36 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/17 19:21:52 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"philo.h"
 
-void detect_death(t_philo *philo)
+void *detect_death(t_data *data)
 {
     long long current_time;
     int i;
 
-    while (1)
+    while (!data->simulation_end)
     {
         i = 0;
-        while (i < philo->data->nb_philos)
+        while (i < data->nb_philos)
         {
             current_time = current_time_ms();
-            if (current_time - philo[i].last_meal_eating > philo->data->time_to_die)
+            if (current_time - data->philo[i].last_meal_eating > data->time_to_die)
             {
-                printf("Philosopher %d has died.\n", philo[i].philo_id);
-                exit(0); // or handle death appropriately
+               printf("%lld Philosopher %d died\n",
+                       current_time_ms() - data->start_time,
+                       data->philo[i].philo_id);
+                data->simulation_end = 1;
+                return NULL;
             }
             i++;
         }
         usleep(1000); // Check every millisecond
     }
+    return NULL;
 }

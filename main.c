@@ -6,7 +6,7 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:22:58 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/16 17:13:13 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/17 19:28:40 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,11 +57,13 @@ int main (int ac , char **av)
         free(data);
         return 1;
     }
+    create_philo(data->philo, data);
+    
     
     
     // free(data->forks);
     // free(data->philo);
     // free(data);
-    return 0;
+    // return 0;
     
 }

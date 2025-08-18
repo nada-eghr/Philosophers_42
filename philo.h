@@ -6,7 +6,7 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:23:42 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/16 16:10:42 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/18 11:45:13 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_data
     int             time_to_sleep;
     int             nb_time_must_eat;
     int             start_time;
+    int             simulation_end; 
 
 } t_data;
 
@@ -58,6 +59,7 @@ void init_philosopher(t_philo *philo , t_data *data);
 int init_data(t_data *data , int ac , char **av);
 void *routine(void *arg);
 void create_philo(t_philo *philo , t_data *data);
+void *detect_death(t_data *data);
 // int is_positive_number(char *str);
 // int check_args(char **args);
-#endif
+#endif 

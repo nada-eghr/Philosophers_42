@@ -6,7 +6,7 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 12:21:53 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/16 12:51:07 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/17 19:30:51 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	init_data(t_data *data, int ac, char **av)
 		pthread_mutex_init(&data->forks[i], NULL);
         i++;
     }
+	data->simulation_end = 0;
 	data->start_time = current_time_ms();
 	init_philosopher(data->philo, data);
 	return (0);
