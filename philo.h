@@ -54,7 +54,7 @@ typedef struct s_data
 
 } t_data;
 
-long long current_time_ms(void);
+int current_time_ms(void);
 void init_philosopher(t_philo *philo , t_data *data);
 int init_data(t_data *data , int ac , char **av);
 void *routine(void *arg);

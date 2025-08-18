@@ -27,15 +27,19 @@ void *detect_death(void *arg)
             current_time = current_time_ms();
             if (current_time - data->philo[i].last_meal_eating > data->time_to_die)
             {
-               printf("%lld   %d is died\n",
+               printf("%d   %d is died\n",
                        current_time_ms() - data->start_time,
                        data->philo[i].philo_id);
                 data->simulation_end = 1;
+                // exit(1);
                 return NULL;
             }
             i++;
         }
-        usleep(1000); // Check every millisecond
+        usleep(200); // Check every millisecond
+
+
+
     }
     return NULL;
 }
