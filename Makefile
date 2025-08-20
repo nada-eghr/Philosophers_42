@@ -1,13 +1,14 @@
 # Compiler and flags
 # -g -fsanitize=address
-CC      = cc -g -fsanitize=address
-CFLAGS  = -Wall -Wextra -Werror -pthread
+CC      = cc 
+CFLAGS  = -Wall -Wextra -Werror -pthread 
 LDFLAGS = -pthread
+# -fsanitize=thread -g
 # LIBS    = -lreadline
 
 # Source and object files
 NAME    = philo
-SRCS    =  ./main.c  ./init.c  ./create_philos.c ./detect_death.c
+SRCS    =  ./main.c  ./init.c  ./create_philos.c ./detect_death.c ./routine.c
 		
 			
 OBJS    = $(SRCS:.c=.o)
