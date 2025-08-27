@@ -6,7 +6,7 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 15:14:30 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/20 20:03:21 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/24 19:11:18 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ void	*one_philo(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
+	pthread_mutex_lock(&philo->data->forks[philo->left_fork]);
+	ft_write(philo, "has taken a fork\n");
+	ft_usleep(philo->data->time_to_die);
+	ft_write(philo, "died\n");
+	pthread_mutex_lock(&philo->data->simulation_end_mutex);
+	philo->data->simulation_end = 1;
+	pthread_mutex_unlock(&philo->data->simulation_end_mutex);
+	pthread_mutex_unlock(&philo->data->forks[philo->left_fork]);
 	return (NULL);
 }
 

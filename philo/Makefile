@@ -1,16 +1,11 @@
-# Compiler and flags
-# -g -fsanitize=address
 CC      = cc 
-CFLAGS  = -Wall -Wextra -Werror -pthread 
+CFLAGS  = -Wall -Wextra -Werror -pthread  #-fsanitize=thread -g
 LDFLAGS = -pthread
-# -fsanitize=thread -g
-# LIBS    = -lreadline
 
 # Source and object files
 NAME    = philo
 SRCS    =  ./main.c  ./init.c  ./create_philos.c ./detect_death.c ./routine.c
 		
-			
 OBJS    = $(SRCS:.c=.o)
 
 # Build target

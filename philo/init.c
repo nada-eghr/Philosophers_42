@@ -6,11 +6,36 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 12:21:53 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/20 20:06:29 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/23 19:10:11 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+int	ft_atoi(const char *str)
+{
+	int					i;
+	int					result;
+	int					signe;
+
+	result = 0;
+	signe = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			signe = -1;
+		i++;
+	}
+	while (str[i] && str[i] >= '0' && str[i] <= '9')
+	{
+		result = result * 10 + (str[i] - '0');
+		i++;
+	}
+	return (result * signe);
+}
 
 int	current_time_ms(void)
 {
@@ -41,17 +66,17 @@ void	init_philosopher(t_philo *philo, t_data *data)
 
 int	init_args(t_data *data, int ac, char **av)
 {
-	data->nb_philos = atoi(av[1]);
+	data->nb_philos = ft_atoi(av[1]);
 	if (data->nb_philos <= 0 || data->nb_philos > 200)
 	{
 		printf("Invalid number of philosophers\n");
 		return (1);
 	}
-	data->time_to_die = atoi(av[2]);
-	data->time_to_eat = atoi(av[3]);
-	data->time_to_sleep = atoi(av[4]);
+	data->time_to_die = ft_atoi(av[2]);
+	data->time_to_eat = ft_atoi(av[3]);
+	data->time_to_sleep = ft_atoi(av[4]);
 	if (ac == 6)
-		data->nb_time_must_eat = atoi(av[5]);
+		data->nb_time_must_eat = ft_atoi(av[5]);
 	else
 		data->nb_time_must_eat = -1;
 	if (data->time_to_die <= 0 || data->time_to_eat <= 0

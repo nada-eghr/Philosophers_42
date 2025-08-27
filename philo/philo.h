@@ -6,7 +6,7 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/14 13:23:42 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/20 20:09:42 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/23 19:14:23 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ int						init_data(t_data *data, int ac, char **av);
 void					*routine(void *arg);
 void					create_philo(t_philo *philo, t_data *data);
 void					*detect_death(void *arg);
-int						get_simiulation(t_data *data);
+int						get_simulation(t_data *data);
 void					*one_philo(void *arg);
 void					ft_usleep(int time);
+void					ft_write(t_philo *philo, char *str);
 #endif

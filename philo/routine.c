@@ -6,7 +6,7 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 19:59:11 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/20 20:07:06 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/23 21:25:59 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_write(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(&philo->data->write_mutex);
-	if (get_simiulation(philo->data) == 1)
+	if (get_simulation(philo->data) == 1)
 	{
 		pthread_mutex_unlock(&philo->data->write_mutex);
 		return ;
@@ -62,12 +62,10 @@ void	*routine(void *arg)
 	philo = (t_philo *)arg;
 	think(philo);
 	if (philo->philo_id % 2 == 1)
-	{
 		ft_usleep(10);
-	}
 	while (1)
 	{
-		if (get_simiulation(philo->data) == 1)
+		if (get_simulation(philo->data) == 1)
 			break ;
 		eat(philo);
 		ft_sleep(philo);

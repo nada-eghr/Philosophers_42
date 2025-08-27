@@ -6,13 +6,13 @@
 /*   By: naessgui <naessgui@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 18:47:34 by naessgui          #+#    #+#             */
-/*   Updated: 2025/08/20 19:55:14 by naessgui         ###   ########.fr       */
+/*   Updated: 2025/08/24 14:25:09 by naessgui         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	get_simiulation(t_data *data)
+int	get_simulation(t_data *data)
 {
 	int	value;
 
@@ -32,7 +32,7 @@ void	check_nb_time_must_eat(t_data *data)
 	while (j < data->nb_philos)
 	{
 		pthread_mutex_lock(&data->philo[j].meal_eaten_mutex);
-		if (data->philo[j].meal_eaten == data->nb_time_must_eat)
+		if (data->philo[j].meal_eaten >= data->nb_time_must_eat)
 		{
 			counter++;
 		}
@@ -63,7 +63,7 @@ void	*monitor(t_data *data)
 			pthread_mutex_lock(&data->simulation_end_mutex);
 			data->simulation_end = 1;
 			pthread_mutex_unlock(&data->simulation_end_mutex);
-			printf("%d   %d is died\n", current_time_ms() - data->start_time,
+			printf("%d   %d died\n", current_time_ms() - data->start_time,
 				data->philo[i].philo_id);
 			return (NULL);
 		}
@@ -78,14 +78,11 @@ void	*detect_death(void *arg)
 	t_data	*data;
 
 	data = (t_data *)arg;
-	while (!get_simiulation(data))
+	while (!get_simulation(data))
 	{
 		monitor(data);
-		usleep(100);
 		if (data->nb_time_must_eat > 0)
-		{
 			check_nb_time_must_eat(data);
-		}
 		usleep(100);
 	}
 	return (NULL);
